@@ -42,31 +42,28 @@ const growthTable = {
   },
 
   appendColumn() {
-    [...this.rows].forEach(row => {
-      row.append(row.lastElementChild.cloneNode(true));
+    [...this.rows]
+      .forEach(row => row.append(row.lastElementChild.cloneNode(true)));
 
-      if (row.cells.length === this.maxSize) {
-        this.appendColumnBtn.disabled = true;
-      }
+    if (this.rows[0].cells.length === this.maxSize) {
+      this.appendColumnBtn.disabled = true;
+    }
 
-      if (this.removeColumnBtn.disabled === true) {
-        this.removeColumnBtn.disabled = false;
-      }
-    });
+    if (this.removeColumnBtn.disabled === true) {
+      this.removeColumnBtn.disabled = false;
+    }
   },
 
   removeColumn() {
-    [...this.rows].forEach(row => {
-      row.lastElementChild.remove();
+    [...this.rows].forEach(row => row.lastElementChild.remove());
 
-      if (row.cells.length === this.minSize) {
-        this.removeColumnBtn.disabled = true;
-      }
+    if (this.rows[0].cells.length === this.minSize) {
+      this.removeColumnBtn.disabled = true;
+    }
 
-      if (this.appendColumnBtn.disabled === true) {
-        this.appendColumnBtn.disabled = false;
-      }
-    });
+    if (this.appendColumnBtn.disabled === true) {
+      this.appendColumnBtn.disabled = false;
+    }
   },
 
   init() {
